@@ -5,8 +5,7 @@ import django_heroku
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-SECRET_KEY = 'thisismysecretkeymrororo'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 
 DEBUG = True
@@ -76,9 +75,11 @@ DATABASES = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'dashngsuper@gmail.com'
-EMAIL_HOST_PASSWORD = 'luckypius5'
+EMAIL_HOST_USER = os.environ['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_HOST_PASSWORD']
 EMAIL_PORT = 587
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
