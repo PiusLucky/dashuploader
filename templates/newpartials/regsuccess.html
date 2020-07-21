@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success alert-dismissible" role="alert" align="middle">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong><i class="fa fa-registered" aria-hidden="true"></i>&nbsp;{{message}}</strong>
+</div>
+<hr>
+<div class="well well-sm" align="middle"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Click <a href="{% url 'BeginningDash:home' %}"> Here </a> to sign in </div>
+<hr>
+{% endfor %}
+{% endif %}
+
+
+
+{% endblock content %}

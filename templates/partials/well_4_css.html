@@ -1,0 +1,30 @@
+<div class="collapse" id="forcss">
+  <div class=" well">
+  <!--   <h3>{{ files }}</h3> -->
+	{% for file in code_files %} 
+	{% if file %}
+    {% if file.CSS %}
+	<b><i class="fa fa-css3" aria-hidden="true"></i>&nbsp;Upload {{file.id}}</b><br>
+	<b><i class="fa fa-folder-o" aria-hidden="true"></i>&nbsp;Directory :: </b>&nbsp; {{file.folder}} <br>
+	
+	 <b><i class="fa fa-code" aria-hidden="true"></i>&nbsp;CSS Title :: </b>&nbsp;<span id="vidname" data-toggle="modal" data-target="#{{file.CSS.size}}" title="Click For More Details "> {{file.CSS.name|safe|truncatechars_html:25|slice:"8:"}}&nbsp;<i class="fa fa-eercast" aria-hidden="true"></i></span> <br>   
+	   {% include 'partials/modal4css.html' %}
+	<b><i class="fa fa-file-o" aria-hidden="true"></i>&nbsp;CSS Size :: </b>&nbsp; {{file.CSS.size|filesizeformat}}
+	<br> 
+	<div class="pull-left" >  
+	<form action="{% url 'BeginningDash:delete_code' file.id %}" method="post" style="display: inline;">
+	{% csrf_token %}
+	<input type="hidden" name="code_id" value="{{ file.id }}" />
+	<button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-remove"></span>&nbsp; Delete Folder</button>
+	{% include 'partials/modal4delete.html' %}
+	</form>
+	
+	</div><br>
+    <hr id="hori">
+	{% endif %}
+	{% endif %}
+	{% empty %}
+        <i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp;{{Empty_File}}
+	{% endfor %}
+  </div>
+</div>

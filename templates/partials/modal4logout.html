@@ -1,0 +1,18 @@
+<div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" style="padding-right: 17px;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel"> Ready to Leave?</h4>
+      </div>
+      <div class="modal-body">
+          <p>Select "Logout" below if you are ready to end your current session.</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+         <a href="{% url 'BeginningDash:logout' %}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-log-out"></span> Logout</button></a>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

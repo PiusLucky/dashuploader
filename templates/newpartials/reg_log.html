@@ -1,0 +1,123 @@
+<!-- Register  -->
+<div class="register-wthree">
+  <div class="container">
+  <div class="col-md-6 regstr-l-w3-agileits">
+  <h3 class="tittle-agileits-w3layouts white-w3ls">Upgrade To <span>Premiun</span> and enjoy unlimited access <span class="badge" style="color: red;background-color: black;">discount ON&nbsp;<i class="fa fa-circle" aria-hidden="true" style="color: red;"></i></span></h3>
+  <h4>Upgrade Now</h4>
+  <!--timer-->
+        <section class="examples">
+          <div class="simply-countdown-losange" id="simply-countdown-losange"></div>
+          <div class="clear"></div>
+        </section>
+        <div class="clearfix"></div>
+  <!--//timer-->
+  </div>
+  <div class="col-md-6 regstr-r-w3-agileits" id="divreg">
+  <div class="form-bg-w3ls" >
+  <style type="text/css">
+    span#terms,span#privacy:hover{
+      cursor: pointer;
+    }
+  </style>
+    <h3><span class="glyphicon glyphicon-user" style="color: gold;border-style:dashed;border-width: 3px;border-color: black;"></span>&nbsp;Fill the register form</h3>
+    <p class="para-w3-agile white-w3ls">Register Today And Save For The Future..</p>
+    <form method="post">{% csrf_token%}
+      {{frm}}<br>
+      <small style="color: orange; background-color: black;border-top-left-radius: 5px;border-bottom-right-radius: 5px;"><i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;Upon sign-up you agree to our <span style="color: whitesmoke" id="terms" title="Click for terms of service">terms</span> and <span style="color: whitesmoke" id="privacy" title="click for privacy policy">privacy policy. </span> </small>
+
+      <input  type="submit" value="sign-up" name="submit-reg" class="button-w3layouts hvr-rectangle-out btn" title="Click to submit Registration form" >
+      
+      <p align="middle">Already have an account?<br></p>
+      <p align="middle"><button type="button"  class=" btn btn-info hoverr" id="xxxx" title="Click to display the Sign-In form">Sign In&nbsp;<span class="glyphicon glyphicon-log-in"></span></button></p>
+      
+    </form> 
+  </div>
+  </div>
+ <!--   for terms @ initially setting display to None--> 
+  <div class="col-md-6 regstr-r-w3-agileits" style="display: none;" id="divterms">
+  <div class="form-bg-w3ls" >
+  <style type="text/css">
+    span#terms,span#privacy:hover{
+      cursor: pointer;
+    }
+  </style>
+    <h3><span class="glyphicon glyphicon-bullhorn" style="color: black;border-style:dashed;border-width: 3px;border-color: whitesmoke;"></span>&nbsp;Terms</h3>
+    <p class="para-w3-agile white-w3ls">DashNG super terms and conditions</p>
+    {% include 'newpartials/terms.html'  %}
+    <p align="middle"><button type="button"  class=" btn btn-info hoverr" id="terms2" title="Click to display return to Sign-In/Register form">Return Back&nbsp;<span class="glyphicon glyphicon-log-in"></span></button></p>
+    
+  </div>
+  </div>
+ <!--  // for terms @ initially setting display to None-->
+
+ <!--   for privacy @ initially setting display to None--> 
+  <div class="col-md-6 regstr-r-w3-agileits" style="display: none;" id="divpriv">
+  <div class="form-bg-w3ls" >
+  <style type="text/css">
+    span#terms,span#privacy:hover{
+      cursor: pointer;
+    }
+  </style>
+    <h3><i class="fa fa-briefcase" aria-hidden="true" style="color: black;border-style:dashed;border-width: 3px;border-color: whitesmoke;"></i>&nbsp;Privacy Policy</h3>
+    <p class="para-w3-agile white-w3ls">DashNG super Privacy Policy</p>
+    {% include 'newpartials/privacy.html'  %}
+    <p align="middle"><button type="button"  class=" btn btn-info hoverr" id="priv2" title="Click to display return to Sign-In/Register form">Return Back&nbsp;<span class="glyphicon glyphicon-log-in"></span></button></p>
+    
+  </div>
+  </div>
+ <!--  // for privacy @ initially setting display to None--> 
+
+  <style type="text/css">
+    .hoverr:hover{
+      background-color:  orange;
+      transform: perspective(1px) translateZ(0);
+       box-shadow: 0 0 1px transparent;
+        transition-property: color;
+         transition-duration: 0.3s;
+
+    }
+    a#mylink{
+      color: gold;
+    }
+    a#mylink:hover{
+      color: whitesmoke;
+    }
+  </style>
+ <!--  __________________________________________________________________________ -->
+
+  <div class="col-md-6 regstr-r-w3-agileits" style="display: none;" id="divreg2">
+  <div class="form-bg-w3ls">
+    <h3><span class="glyphicon glyphicon-log-in"></span>&nbsp;Fill the Login form</h3>
+    <p class="para-w3-agile white-w3ls">Come On..Sign In And Lets Begin.</p>
+    <form method="post">{% csrf_token %}
+      {{form}}
+      <input  type="submit" value="log-in" name="mylogin" class="button-w3layouts hvr-rectangle-out" title="Click to submit Login-In form">
+      <p align="middle"><a href="{% url 'BeginningDash:reset_password' %}" id="mylink"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;Forgot password??</a> | Don't have an account?<br></p>
+      <p align="middle"><button type="button" class="btn btn-success hoverr" id="xxxx2" title="Click to display the Register form">Register&nbsp;<span class="glyphicon glyphicon-user"></span></button></p>
+    </form> 
+  </div>
+  </div>
+<!--   _____________________________________________________________________________ -->
+    <div class="col-md-6 regstr-r-w3-agileits" style="display: none;" id="divreg3">
+  <div class="form-bg-w3ls">
+    <h3>Fill the Login form</h3>
+   <p class="para-w3-agile white-w3ls">Come On..Sign In And Lets Begin.</p>
+    <form  method="post">
+       {{form}}
+      <input  type="submit" value="log-in" name="mylogin" class="button-w3layouts hvr-rectangle-out">
+      <p align="middle"><a href="{% url 'BeginningDash:reset_password' %}" id="mylink"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;Forgot password??</a> | Don't have an account?<br></p>
+      <p align="middle"><button type="button" class="btn btn-primary hoverr" id="xxxx2" title="Click to display the Register form">Register&nbsp;<span class="glyphicon glyphicon-user"></span></button></p>
+    </form> 
+  </div>
+  </div>
+<!--   _____________________________________________________________________________ -->
+
+  <div class="clearfix"></div>
+  </div>
+</div>
+<!-- //Register -->
+
+
+
+
+

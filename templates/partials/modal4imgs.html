@@ -1,0 +1,91 @@
+<div class="modal fade"  id="{{file.IMAGE.size}}" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        {% if file %}
+        {% if file.IMAGE %}
+        <div class="hidden-xs hidden-sm hidden-md">
+        <hr>
+        <h6 class="modal-title" id="gridSystemModalLabel"  style="color:#1ca0de;"><b><i class="fa fa-eercast"  aria-hidden="true"></i> &nbsp;Details Of Image File  {{file.IMAGE.name|safe|truncatechars_html:50|slice:"8:"}}</b><hr></h6><br>
+        <div  class="small">
+        <i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;<b>Uploaded :: </b>{{file.date_uploaded|timesince}} ago <br>
+        <i class="fa fa-file-video-o" aria-hidden="true"></i>&nbsp;<b>File Name :: </b>{{ file.IMAGE.name|slice:"8:" }}<br>
+        <i class="fa fa-file-o" aria-hidden="true"></i>&nbsp;<b>File Size :: </b>{{ file.IMAGE.size|filesizeformat }}<br>
+        <i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;<b>Optional Comment :: </b>{{ file.comment}}<br>
+        </div>
+        </div>
+        <div class="hidden-lg">
+        <button type="button" class="close pull-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
+        <hr>
+        <small class="modal-title" id="gridSystemModalLabel"><h6 style="color:#1ca0de; "><i class="fa fa-eercast"  aria-hidden="true"></i> &nbsp;Details Of Image File  {{file.IMAGE.name|safe|truncatechars_html:50|slice:"8:"|slice:":12"}}</h6><hr><br>
+        
+
+      
+        <i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;<b>Uploaded :: </b>{{file.date_uploaded|timesince}} ago <br>
+        <i class="fa fa-file-video-o" aria-hidden="true"></i>&nbsp;<b>File Name :: </b>{{ file.IMAGE.name|slice:"8:" }}<br>
+        <i class="fa fa-file-o" aria-hidden="true"></i>&nbsp;<b>File Size :: </b>{{ file.IMAGE.size|filesizeformat }}<br>
+        <i class="fa fa-file-text" aria-hidden="true"></i>&nbsp;<b>Optional Comment :: </b>{{ file.comment}}<br>
+      </small>
+       </div>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+         <div class="col-md-8">
+        <div class="small hidden-xs hidden-sm hidden-md">
+           <h6  style="color:#1ca0de;"><b><i class="fa fa-download" aria-hidden="true"></i> Download Section</b><hr></h6>
+           <b><i class="fa fa-film" aria-hidden="true"></i>&nbsp;Preview</b><br>
+           <!-- ________________________________________________________ -->
+              <div>
+                <img src="{{ file.IMAGE.url }}">
+              </div>
+                   <small><i class="fa fa-play-circle" aria-hidden="true"></i>&nbsp;Viewing  <i class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size:10px;"></i>
+                <span class="sr-only">Loading...</span><span style="color: red;">
+                <a id="ffff" href="{{file.IMAGE.url}}">{{file.IMAGE.name|truncatechars_html:50}}</a></span></small><br><br>
+                <span><i class="fa fa-hand-o-right" aria-hidden="true" style="color: gold;"></i> &nbsp;Hint...You Can Download The Above Image By Right-Clicking On it and Hitting SAVE. </span><br><br><div align="middle"><b>OR</b></div><br>
+          </div>
+
+          <div class="small hidden-lg">
+
+          <small>
+           <h6 style="color:#1ca0de;"><b><i class="fa fa-download" aria-hidden="true"></i> Download Section</b><hr></h6>
+           <b><i class="fa fa-film" aria-hidden="true"></i>&nbsp;Preview<br></b>
+           <!-- ________________________________________________________ -->
+              
+                <i class="fa fa-play-circle" aria-hidden="true"></i>&nbsp;Use link <i class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size:10px;"></i>
+                <span class="sr-only">Loading...</span><span style="color: red;">
+                <a id="ffff" href="{{file.IMAGE.url}}">{{file.IMAGE.name|truncatechars_html:50}}</a></span><br><br>
+              </small>
+          </div>
+           <!-- ________________________________________________________ -->
+           <div class="hidden-xs hidden-sm hidden-md"><b><i class="fa fa-clone" aria-hidden="true"></i>&nbsp;Download Directly</b><span class="hidden-sm hidden-md hidden-lg"><br><br></span>&nbsp;&nbsp; <a href="{{ file.IMAGE.url}}" download="{{ file.IMAGE.url|slice:'15:'}}" >
+              <button type="button" class="btn btn-info btn-md "><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Download </button>
+           </a><br><br><br><br>
+           </div>
+           <div class="hidden-lg pull-left">
+          
+           <b><i class="fa fa-clone" aria-hidden="true"></i>&nbsp;Download Directly</b><span class="hidden-sm hidden-md hidden-lg"><br><br></span>&nbsp;&nbsp; <a href="{{ file.IMAGE.url}}" download="{{ file.IMAGE.url|slice:'15:'}}" >
+              <button type="button" class="btn btn-info btn-md "><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Download </button>
+           </a><br><br><br><br>
+           </span>
+           </div>
+           
+
+         </div>
+         <div class="col-md-4">
+           
+           
+         </div>
+          
+        </div>
+      </div>
+
+        {% endif %}
+        {% endif %}
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info"  data-dismiss="modal"><i class="fa fa-window-close" aria-hidden="true"></i>&nbsp;Exit&nbsp;</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

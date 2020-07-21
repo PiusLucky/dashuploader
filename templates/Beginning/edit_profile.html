@@ -1,0 +1,105 @@
+
+
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<style type="text/css">
+	.profileback{
+		background: url("{% static '/contactpage/images/try1.jpg' %}");
+		color: whitesmoke;
+	}
+</style>
+<div class="container row">
+	<div class="col-md-6">
+	<hr>
+	{% if request.method == 'GET' %}
+	    {% if not request.user.userprofile.phone and not request.user.userprofile.description and not request.user.userprofile.website and not request.user.userprofile.city and not request.user.userprofile.image %}
+			<div class="alert alert-warning alert-dismissible" role="alert">
+				<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;Profile incomplete. # update your profile here!!</a>
+			</div>
+			{% else %}
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Profile completed.
+			</div>
+			{% endif %}	
+	{% endif %}
+		{% if save_success %}
+		<div class="alert alert-success alert-dismissible" role="alert">
+			<strong><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;{{save_success}}</strong>
+		</div>
+		{% endif %}
+		{% if save_error%}
+		<div class="alert alert-warning alert-dismissible" role="alert">
+			<strong><i class="fa fa-user-times" aria-hidden="true"></i>&nbsp;{{save_error}}</strong> 
+		</div>
+		{% endif %}
+		<h4 class="profileback">
+			<hr>
+			<div class="media">
+				<div class="media-left media-middle">
+					<a href="#">
+						{% if  user.userprofile.image %}
+						<div class="history-grid-image">
+							<img  src="{{ user.userprofile.image.url }}" alt="Profile image of {{user}} " width="300" height="300" class="zoom-img" >
+						</div>
+						{% else %}
+						<div class="history-grid-image">
+							<img  src="{% static 'base/All/no_image.png' %}" alt="Profile image of {{user}} " width="300" height="300" class="zoom-img">
+						</div>
+
+						{% endif %}
+
+
+					</a>
+				</div>
+				<div class="media-body">
+					<h5 class="media-heading"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;Name | {{user}} |</h5><br>
+					<h5 class="media-heading"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;Email | {{user.email}} |</h5><br>
+					<h5 class="media-heading"><i class="fa fa-mobile" aria-hidden="true"></i>&nbsp;Phone | {{user.userprofile.phone}} |</h5><br>
+					<h5 class="media-heading"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;City | {{user.userprofile.city}} |</h5><br>
+					<h5 class="media-heading">
+						{% if free_status %}<i class="fa fa-star-o" aria-hidden="true" title="Free User Badge"></i>{% endif %}
+						<!--Use this for Premium Users -->
+						<!-- {% if premium_status %}<i class="fa fa-star" aria-hidden="true" style="color: gold;"  title="Premium User Badge"></i>{% endif %} -->
+						&nbsp;Status | {{free_status}} |</h5><br>
+						<hr>
+						<a href="{% url 'BeginningDash:view_profile'  %}"><button class="btn btn-block btn-info" type="button" style="border-left-style: ridge; border-left-width: 3px; border-left-color: black; border-bottom-left-radius: 4px; border-right-style: groove; border-right-width: 3px; border-right-color: black;" ><i class="fa fa-caret-square-o-left" aria-hidden="true"></i>&nbsp;Back To Profile</button></a>
+						<hr>
+
+
+					</div>
+				</div>
+				<hr>
+
+			</h4> 
+		</div>
+		<div class="col-md-6 profileback">
+				<hr>
+				<h3 align="middle"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit your account</h3>  
+				<p align="middle">You can edit your account using the following form:</p>  
+				<hr>
+				<form action="." method="post" enctype="multipart/form-data">    
+					{{ user_form|crispy }}    
+					{{ profile_form|crispy }}    
+					{% csrf_token %}    
+		  
+					<hr>
+					<a href="{% url 'BeginningDash:edit_profile'  %}"><button class="btn btn-block btn-info" type="submit" style="border-left-style: ridge; border-left-width: 3px; border-left-color: black; border-bottom-left-radius: 4px; border-right-style: groove; border-right-width: 3px; border-right-color: black;" ><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Save Changes</button></a>
+					<hr>
+
+					</form>
+					
+
+		
+	    </div>
+ 
+</div> <!-- for row -->
+<hr>
+
+
+{% endblock content %}}
+
+
+

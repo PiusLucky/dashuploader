@@ -1,0 +1,166 @@
+ <!--  ___________________________________________________________________________________________________________________  STARTNAV-->
+ {% load static %}
+  {% url "BeginningDash:begin" as begin %} 
+  {% url "BeginningDash:home" as home %} 
+  {% url "BeginningDash:view_profile" as viewprofile %} 
+  {% url "BeginningDash:logout" as logout %} 
+  {% url "BeginningDash:signup" as signup %} 
+  {% url "BeginningDash:code" as code %} 
+  {% url "BeginningDash:code_files" as code_files %} 
+  {% url "BeginningDash:allfiles" as file_files %} 
+  {% url "BeginningDash:gallery" as gallery %} 
+  {% url "BeginningDash:contact" as contact %} 
+  {% url "BeginningDash:created_document" as created_document %}
+
+ {% if not user.is_authenticated %}       
+ <div class="h-top" id="home">
+   <div class="top-header">
+    <ul class="cl-effect-16 top-nag">
+      <li><a {% if request.path == signup %}  class="active" {% endif %} href="" data-hover="REGISTRATION">REGISTRATION</a>
+      </li> 
+      <li><a href="" data-hover="ABOUT">ABOUT</a></li>
+      <li><a href="" data-hover="SERVICES">SERVICES</a></li>
+      <li><a href="" data-hover="CONTACT">CONTACT</a></li>
+      <li><a href="{% url 'BeginningDash:begin' %}" data-hover="LOGIN">LOGIN</a></li> 
+    </ul>
+   
+
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="full">
+  <div class="col-md-3 top-nav register" style="position: fixed;" >
+   <div class="logo">
+    <a {% if request.path == home %} style="background-color: black;" {% endif %} href="{% url 'BeginningDash:home' %}" ><h1 style="color: whitesmoke;">DashNG</h1></a>
+     <a class="btn btn-info  hidden-lg hidden-md" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        MENU
+    </a>
+    <div class="collapse hidden-lg hidden-md hidden-sm " id="collapseExample">
+      <div class="well">
+        <ul class="cl-effect-16 ">
+        <li   {% if request.path == home %} class="active" {% endif %} ><a href="{% url 'BeginningDash:home' %}" data-hover="HOME" >HOME</a></li> 
+        <li><a href="" data-hover="ABOUT">ABOUT</a></li> 
+        <li><a href="" data-hover="GALLERY">GALLERY</a></li>
+        <li><a href="" data-hover="CONTACT">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="top-menu">
+   <ul class="cl-effect-16  hidden-xs">
+    <li><a  {% if request.path == home %} class="active" {% endif %} href="{% url 'BeginningDash:home' %}" data-hover="HOME">HOME</a></li> 
+    <li><a href="" data-hover="ABOUT">ABOUT</a></li>
+    <li  ><a {% if request.path == code %} class="active" {% endif %}  href="{% url 'BeginningDash:code' %}" data-hover="CODES">CODES</a></li>
+    <li><a href="" data-hover="SERVICES">SERVICES</a></li>
+    <li><a href="" data-hover="GALLERY">GALLERY</a></li>
+    <li><a href="" data-hover="CONTACT">CONTACT</a></li>
+  </ul>
+ 
+  <ul class="side-icons">
+    <li><a class="fb" href="#"></a></li>
+    <li><a class="twitt" href="#"></a></li>
+    <li><a class="goog" href="#"></a></li>
+    <li><a class="drib" href="#"></a></li>
+  </ul>
+</div>
+</div>
+</div>
+
+{% else %}
+
+  <div class="h-top" id="home">
+   <div class="top-header">
+    <ul class="cl-effect-16 top-nag navbar-left">
+      <li><a  {% if request.path == home %} class="active" {% endif %} href="{% url 'BeginningDash:home' %}" data-hover="HOME">HOME</a></li> 
+      <li><a href="l" data-hover="ABOUT">ABOUT</a></li>
+      <li><a href="" data-hover="CONTACT">CONTACT</a></li>
+       <li><a href="" data-hover="UPGRADE">UPGRADE<sup style="font-size: 10px;" class="hidden-xs">TM</sup></a></li>
+    </ul>
+    <ul class="cl-effect-16 top-nag navbar-right" >
+    <style type="text/css">
+      a#hover:hover{
+        color: red;
+        background-color: white;
+        cursor: pointer;
+      }
+      a#drop{
+        color: whitesmoke;
+        background-color: black;
+      }
+      a#drop:hover{
+        color: black;
+        background-color: whitesmoke;
+      }
+
+    </style>
+      <li class="dropdown">
+        <a  {% if request.path == viewprofile %} class="active" {% endif %} class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CORE<span class="caret"></span></a>
+        <ul class="dropdown-menu" style="background-color:#4a245e;">
+          
+          <li><a id="drop" href="{% url 'BeginningDash:view_profile' %}"><i class="fa fa-inbox" aria-hidden="true"></i>&nbsp;CORE&nbsp;DASHBOARD&nbsp;<span class="badge">{{news_count}}</span></a></li>
+          <li><a id="drop" class="reloadpage" href="#"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;REFRESH PAGE&nbsp;&nbsp;<span class="badge" style="color: red;">Hot</span></a></li>
+          
+        </ul>
+      </li>
+      <li><a href="" data-hover="DONATE">DONATE</a></li>
+     <li><a  cl {% if request.path == code %} class="active" {% endif %} ass= "nav-link" href="{% url 'BeginningDash:code' %}" id="hover"><i class="fa fa-code" aria-hidden="true"></i>&nbsp;CODES</a></li>
+      <li class="pull-right"><a class= "nav-link" data-toggle="modal" data-target="#logout" id="hover"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;SIGNOUT</a></li>
+      
+    </ul>
+     {% include 'partials/modal4logout.html' %}
+     {% include 'partials/modal4codes.html' %}
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="full">
+
+
+ 
+
+  <div class="col-md-3 top-nav register" style="height: 100%">
+   <div class="logo">
+   <div align="middle"><span><b><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;<span >USER STATUS</span></b></div><button type="button" class="btn btn-success btn-lg btn-block" disabled="disabled"><i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp; {{user_status}}</button></span><br>
+    <div align="middle"><a href="{% url 'BeginningDash:home' %}" class="logo"><img id="logo" src="{% static 'logo/dash.jpg' %}"  alt=""></a></div>
+        <a class="btn btn-info  hidden-lg hidden-md hidden-sm" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        MENU
+    </a>
+
+    <div class="collapse hidden-lg hidden-md hidden-sm " id="collapseExample">
+      <div class="well">
+        <ul class="cl-effect-16 ">
+        <li   {% if request.path == home %} class="active" {% endif %} ><a href="{% url 'BeginningDash:home' %}" class="active" data-hover="HOME" >HOME</a></li> 
+        <li><a href="" data-hover="ABOUT">ABOUT</a></li>
+        <li ><a {% if request.path == code %} class="active" {% endif %}  href="{% url 'BeginningDash:code' %}" data-hover="CODES">CODES</a></li>
+         <li><a href="" data-hover="CUBU"><span title="Codes Uploaded By {{user}} ">CUBU</span></a></li>
+        <li  ><a href="{% url 'BeginningDash:allfiles' %}" data-hover="FUBU"><span title="Files Uploaded By  {{user}}">FUBU</span></a></li>
+        <li><a href="" data-hover="GALLERY">GALLERY</a></li>
+        <li><a href="" data-hover="CONTACT">CONTACT</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="top-menu">
+
+   <ul class="cl-effect-16">
+    <li><a  {% if request.path == home %} class="active" {% endif %} href="{% url 'BeginningDash:home' %}" data-hover="HOME"><span title="GoTo Files Upload page.">HOME</span></a></li> 
+    <li><a href="about.html" data-hover="ABOUT"><span title="Check out About DashNG.">ABOUT</span></a></li>
+    <li  ><a {% if request.path == code %} class="active" {% endif %}  href="{% url 'BeginningDash:code' %}" data-hover="CODES"><span title="GoTo the Codes' page.">CODES</span></a></li>
+     <li><a href="" data-hover="[ CUBU ]"><span title="Codes Uploaded By {{user}} ">[ CUBU ]</span></a></li>
+      <li ><a href="{% url 'BeginningDash:allfiles' %}" data-hover="[ FUBU ]" {% if request.path == file_files %} class="active" {% endif %} ><span title="Files Uploaded By  {{user}}">[ FUBU ]</span></a></li>
+    <li><a href="{% url 'BeginningDash:gallery' %}"  data-hover="GALLERY"  {% if request.path == gallery %} class="active" {% endif %}><span title="{{user}}'s Gallery">GALLERY</span></a></li>
+    <li><a href="{% url 'BeginningDash:contact' %}" data-hover="CONTACT"><span title="Contact DashNG anytime.">CONTACT</span></a></li>
+  </ul>
+
+   
+  <ul class="side-icons">
+    <li><a class="fb" href="#"></a></li>
+    <li><a class="twitt" href="#"></a></li>
+    <li><a class="goog" href="#"></a></li>
+    <li><a class="drib" href="#"></a></li>
+  </ul>
+</div>
+</div>
+</div>
+
+{% endif %}
+<!--  ___________________________________________________________________________________________________________________  ENDNAV-->

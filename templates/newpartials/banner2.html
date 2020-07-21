@@ -1,0 +1,129 @@
+<!-- banner -->
+  {% load static %}
+  {% url "BeginningDash:begin" as begin %} 
+  {% url "BeginningDash:home" as home %} 
+  {% url "BeginningDash:view_profile" as viewprofile %} 
+  {% url "BeginningDash:logout" as logout %} 
+  {% url "BeginningDash:signup" as signup %} 
+  {% url "BeginningDash:code" as code %} 
+  {% url "BeginningDash:aboutfornonuser" as aboutfornonuser %} 
+  {% url "BeginningDash:mycontact4offlineuser" as mycontact4offlineuser %} 
+  {% url "BeginningDash:view_profile" as view_profile %} 
+  {% url "BeginningDash:edit_profile" as edit_profile %} 
+  {% url "BeginningDash:aboutus" as aboutus %} 
+  {% url "BeginningDash:code_files" as code_files %} 
+  {% url "BeginningDash:allfiles" as file_files %} 
+  {% url "BeginningDash:gallery" as gallery %} 
+  {% url "BeginningDash:contact" as contact %} 
+  {% url "BeginningDash:allfiles" as allfiles %} 
+  {% url "BeginningDash:allcodes" as allcodes %} 
+  {% url "BeginningDash:created_document" as created_document %}
+<div class="banner inner-banner-w3-agileits" id="home">
+	<div class="banner-overlay-agileinfo">
+		<div class="top-header-agile">
+			<h1><a class="col-md-4 navbar-brand" href="{% url 'BeginningDash:home' %}">DashNG<span>We Save Your Files For The Future</span></a></h1>
+			<div class="col-md-4 top-header-agile-right">
+				
+			</div>
+			<div class="col-md-4 top-header-agile-left">
+				<ul class="num-w3ls">
+					<li><i class="fa fa-phone" aria-hidden="true"></i></li>
+					 <li>+2349062360533</li>
+				</ul>
+				<div class="w3ls_search">
+					<div class="cd-main-header">
+						<ul class="cd-header-buttons">
+							<li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+						</ul> <!-- cd-header-buttons -->
+					</div>
+					<div id="cd-search" class="cd-search">
+						<div class="hidden-xs hidden-sm"><h5 style="color: whitesmoke; font-weight: bold;"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp;DashNGSuper all data-safe platform [Upgrade Coming Soon!]</h5></div>
+						<div class="hidden-md hidden-lg"><h5 style="color: whitesmoke; font-weight: bold;"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp;[Upgrade Coming Soon!].</h5></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="clearfix"></div>
+		</div>
+
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header navbar-left">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+					
+					<nav class="link-effect-3" id="link-effect-3">
+            <ul class="nav navbar-nav">
+              <li {% if request.path == home %} class="active" {% endif %} ><a href="{% url 'BeginningDash:home' %}" data-hover="Home"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a></li>
+              <li class="dropdown menu__item">
+                <a href="#" class="dropdown-toggle menu__link"  data-toggle="dropdown" data-hover="Pages" role="button" aria-haspopup="true" aria-expanded="false">DashNG~VS<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                {% if request.user.is_authenticated %}
+                  <li  {% if request.path == aboutus %} class="active" {% endif %}><a href="{% url 'BeginningDash:aboutus' %}"><span class="glyphicon glyphicon-globe"></span> About Us</a></li>
+
+                {% else %}
+                 <li  {% if request.path == aboutfornonuser %} class="active" {% endif %}><a href="{% url 'BeginningDash:aboutfornonuser' %}"><span class="glyphicon glyphicon-globe"></span> About Us</a></li>
+
+                {% endif %}
+                 {% if request.user.is_authenticated %}
+                  <li  {% if request.path == contact %} class="active" {% endif %}><a href="{% url 'BeginningDash:contact' %}" data-hover=""><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Contact Us</a></li>
+                 {% else %}
+                 <li  {% if request.path == mycontact4offlineuser %} class="active" {% endif %}><a href="{% url 'BeginningDash:mycontact4offlineuser' %}" data-hover=""><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Contact Us</a></li>
+                 {% endif %}
+                
+                
+                 
+                </ul>
+              </li>
+             {% if request.user.is_authenticated %}
+              <li {% if request.path == gallery %} class="active" {% endif %} ><a href="{% url 'BeginningDash:gallery' %}" data-hover="Gallery"><span class="glyphicon glyphicon-picture"></span> Gallery</a></li>
+              <li class="dropdown menu__item">
+                <a href="#" class="dropdown-toggle menu__link"  data-toggle="dropdown" data-hover="Pages" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-upload" aria-hidden="true"></i>&nbsp;Uploads<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                <li  {% if request.path == view_profile %} class="active" {% endif %} ><a href="{% url 'BeginningDash:view_profile' %}"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;My Profile</a></li>
+                  <li  {% if request.path == allfiles %} class="active" {% endif %}><a href="{% url 'BeginningDash:allfiles' %}"><span class="glyphicon glyphicon-cloud-upload"></span> Files Uploaded</a></li>
+                  <li {% if request.path == allcodes %} class="active" {% endif %}><a href="{% url 'BeginningDash:allcodes' %}"><i class="fa fa-code" aria-hidden="true"></i>&nbsp;Code Uploaded</a></li>
+                  
+                 
+                </ul>
+              </li>
+              <li {% if request.path == code %} class="active" {% endif %} ><a href="{% url 'BeginningDash:code' %}" data-hover="Codes"><i class="fa fa-code" aria-hidden="true"></i>&nbsp;Codes</a></li>
+              
+              <li><a href="{% url 'BeginningDash:logout' %}" data-hover="Log-out">Log-out&nbsp;<span class="glyphicon glyphicon-log-out"></span></a></li>
+              {% else %}
+               <li><a href="{% url 'BeginningDash:home' %}" data-hover="Log-out">Log-In&nbsp;<span class="glyphicon glyphicon-log-out"></span></a></li>
+              {% endif %}
+            </ul>
+          </nav>
+				</div>
+			</nav>	
+			{% if request.path == home %} 
+			<h2 class="inner-tittle-w3layouts" >Home</h2>
+			{% elif request.path == code %}
+			<h2 class="inner-tittle-w3layouts" >Code</h2>
+			{% elif request.path == gallery %}
+			<h2 class="inner-tittle-w3layouts" >Gallery</h2>
+			{% elif request.path == aboutus %}
+			<h2 class="inner-tittle-w3layouts" >About Us</h2>
+			{% elif request.path == allfiles %}
+			<h2 class="inner-tittle-w3layouts" >Uploaded Files</h2>
+			{% elif request.path == allcodes %}
+			<h2 class="inner-tittle-w3layouts" >Uploaded Codes</h2>
+			{% elif request.path == gallery %} 
+			<h2 class="inner-tittle-w3layouts" >Gallery</h2>
+			{% elif request.path == view_profile %}
+			<h2 class="inner-tittle-w3layouts" >Profile [**{{ user }}**]</h2>
+			{% elif request.path == edit_profile %}
+			<h2 class="inner-tittle-w3layouts" >Profile Edit Form</h2>
+			{% endif %} 
+		</div>
+	</div>
+</div>
+<!-- //banner -->

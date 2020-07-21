@@ -1,0 +1,24 @@
+{% load crispy_forms_tags %}
+<div class="modal fade" id="codes" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" style="padding-right: 17px;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        
+        <h4 class="modal-title" id="gridSystemModalLabel"> Ready to Have A Little Taste Of Premium?</h4>
+      </div>
+      <div class="modal-body">
+   
+          <form action="." method="post" enctype="multipart/form-data" id="uploadform">    {{code_form|crispy}}  {% csrf_token %}
+          <br>
+            <div class="modal-footer">
+             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary">Upload Codes</button>
+           </div>
+          </form>
+
+      </div>
+      
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

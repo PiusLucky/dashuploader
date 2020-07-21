@@ -1,0 +1,31 @@
+<div class="collapse" id="forpdfs">
+	<div class=" well">
+		<!--   <h3>{{ files }}</h3> -->
+		{% for file in files %} 
+		{% if file %}
+		{% if file.PDF %}
+		<b><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Upload {{file.id}}</b><br>
+		<b><i class="fa fa-folder-o" aria-hidden="true"></i>&nbsp;Directory :: </b>&nbsp; {{file.file_group}} <br>
+
+		<b><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;PDF Title :: </b>&nbsp;<span id="vidname" data-toggle="modal" data-target="#{{file.PDF.size}}" title="Click For More Details "> {{file.PDF.name|safe|truncatechars_html:25|slice:"8:"}}&nbsp;<i class="fa fa-eercast" aria-hidden="true"></i></span> <br>   
+		{% include 'partials/modal4pdfs.html' %}
+		<b><i class="fa fa-file-o" aria-hidden="true"></i>&nbsp;PDF Size :: </b>&nbsp; {{file.PDF.size|filesizeformat}}
+		<br> 
+		<div class="pull-left" >  
+			<form action="{% url 'BeginningDash:delete_upload' file.id %}" method="post" style="display: inline;">
+				{% csrf_token %}
+				<input type="hidden" name="upload_id" value="{{ file.id }}" />
+				<button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete4pdf"><span class="glyphicon glyphicon-remove"></span>&nbsp; Delete Folder</button>
+				{% include 'partials/modal4delete3.html' %}
+			</form>
+
+		</div><br>
+		<hr id="hori">
+		{% endif %}
+		{% endif %}
+		{% empty %}
+		<i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp;{{Empty_File}}
+		{% endfor %}
+	</div>
+</div>
+

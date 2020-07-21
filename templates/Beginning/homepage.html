@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<hr>
+<style type="text/css">
+	div#scarf{
+		margin-left: -26px;
+		padding-right:-30px;
+		margin-right:30px;
+	}
+	div#scarf2{
+		margin-left: -26px;
+		margin-right:-25px;
+		
+	}
+</style>
+<div class="container">
+	{% include 'partials/marquee.html' %}
+
+	<div class="row">
+		<div class="col-md-5">
+			
+			
+			<p><strong> WELCOME <span style="text-transform: uppercase; font-family: 'black_jackregular';">{{ cvc }}{{ member}},</span> PLEASE ADD YOUR FILES HERE </strong><br> {% if request.method == 'POST' %}<a href="{% url 'BeginningDash:home'%}"><b> <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;upload again!</b></a>{% endif %}</p>
+			<br>
+			{% include 'partials/custommessage.html' %}<br>
+			{% if not request.user.userprofile.phone and not request.user.userprofile.description and not request.user.userprofile.website and not request.user.userprofile.city and not request.user.userprofile.image %}
+			<style type="text/css">
+				a#prof{
+					color: #39bec2;
+				}
+				a#prof:hover{
+					color: gold;
+				}
+
+			</style>
+			<div class="alert alert-warning " role="alert">
+				<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;Profile incomplete. <a href="{% url 'BeginningDash:edit_profile' %}" class="alert-link" id="prof"> #update your profile now!!</a>
+			</div>
+			{% else %}
+			<div class="alert alert-success" role="alert">
+				<i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Profile completed.
+			</div>
+			{% endif %}		
+			<form action="." method="post" enctype="multipart/form-data" id="uploadform">    {{ fileupload_form|crispy }}  {% csrf_token %}
+				<br>
+				{% if request.method == 'POST' %}
+				{% if not fileupload_form.errors %}
+				<div class="progress hidden-xs hidden-sm hidden-md">
+					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 100%;">
+						<span class="pull-left">&nbsp;Uploaded Successfully!!</span><span class="pull-right">100 of 100%&nbsp; </span>
+					</div>
+				</div>
+				{% else %}
+				<!-- empty -->
+				{% endif %}
+				{% endif %}
+				<br>
+				<hr> 
+
+				{% if request.method == 'GET' %}  
+				<p><span class="pull-left">
+					<button type="submit" class="btn btn-primary btn-xs" id="uploadsubmit" onclick="myload()">Upload All&nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i></button> </span>
+					<span class="pull-right">
+						<button type="reset" class="btn btn-primary btn-xs ">Clear&nbsp;<i class="fa fa-undo" aria-hidden="true"></i></button></span></p>  
+						{% endif %}
+
+						{% if request.method == 'POST' %}
+						{% if not fileupload_form.errors %}
+						<p><span class="pull-left">
+							<button type="submit" class="btn btn-primary btn-xs disabled" id="uploadsubmit" onclick="myload()"><i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;Upload All</button> </span>
+							<span class="pull-right">
+								<a href="{% url 'BeginningDash:allfiles' %}"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Download Sum. PDF</button></a></span></p>    
+								{% else %}
+								<p><span class="pull-left">
+									<button type="submit" class="btn btn-primary btn-xs" id="uploadsubmit" onclick="myload()"><i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;Upload All</button> </span>
+									<span class="pull-right">
+										<button type="button" class="btn btn-primary btn-xs disabled"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Download Sum. PDF</button></span></p>  
+										{% endif %}
+										{% endif %}
+									</form>
+									<br>
+									<hr>
+
+								</div>
+
+
+								<div class="col-md-4">
+									<!-- FOR VIDEOS -->
+									<p>
+										<button class="btn btn-info btn-md btn-block" type="button" data-toggle="collapse" data-target="#forvids" aria-expanded="false" aria-controls="collapseExample">
+											<i class="fa fa-film" aria-hidden="true"></i>&nbsp;<small>Uploaded Videos</small>
+										</button>
+									</p>
+
+									{% include 'partials/well_4_videos.html' %}
+									<!--    FOR AUDIOS -->
+									<p>
+										<button class="btn btn-warning btn-md btn-block" type="button" data-toggle="collapse" data-target="#forauds" aria-expanded="false" aria-controls="collapseExample">
+											<i class="fa fa-headphones" aria-hidden="true"></i>&nbsp;<small>Uploaded Audios</small>
+										</button>
+									</p>
+
+									{% include 'partials/well_4_audios.html' %}
+
+
+									<!-- FOR PDFS -->
+									<p>
+										<button class="btn btn-info btn-md btn-block" type="button" data-toggle="collapse" data-target="#forpdfs" aria-expanded="false" aria-controls="collapseExample">
+											<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;<small>Uploaded PDFs</small>
+										</button>
+									</p>
+
+									{% include 'partials/well_4_pdfs.html' %}
+
+									<!-- FOR IMAGES -->
+									<p>
+										<button class="btn btn-warning btn-md btn-block" type="button" data-toggle="collapse" data-target="#forimgs" aria-expanded="false" aria-controls="collapseExample">
+											<i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;<small>Uploaded Images</small>
+										</button>
+									</p>
+
+									{% include 'partials/well_4_imgs.html' %}
+
+
+
+
+
+
+									<br>
+									<hr>
+									<BLOCKQUOTE >
+										<style type="text/css">
+											small#blockq:hover{
+												color:whitesmoke;
+												background-image: url("{% static 'base/Home/b1.jpg' %}") ;
+												background-repeat: no-repeat;
+
+												padding: 5px;
+												border-radius: 5px;
+												border-style: groove;
+												border-right-style: ridge;
+												border-bottom-style: ridge;
+
+											}
+										</style>
+										{% include 'partials/ceospeaks.html' %}
+										
+
+
+									</div>
+
+								</div> 
+								<div >	
+									<style type="text/css">
+										img#contentt{border-radius: 10px; 
+											border-bottom-style:ridge; 
+											border-top-style: groove; 
+											border-width: 5px;
+										}
+									</style>
+
+								</div>
+								<hr>
+
+								<!-- Stats -->
+								<div class="stats-agileits" id="stats">
+									<div class="container">
+										<h3 class="tittle-agileits-w3layouts">Total <span class="green-w3">file{{total_total|pluralize}}</span> uploaded  <span>statistics.</span></h3>
+										<div class="stats-info agileits w3layouts">
+											<div class="col-md-3 agileits w3layouts col-sm-3 stats-grid stats-grid-1">
+												<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='{{total_vids}}' data-delay='3' data-increment="1">{{total_vids}}</div>
+												<div class="stat-info-w3ls">
+													<h4 class="agileits w3layouts">Video{{total_vids|pluralize}}</h4>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-3 agileits w3layouts stats-grid stats-grid-2">
+												<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='{{total_auds}}' data-delay='3' data-increment="1">{{total_auds}}</div>
+												<div class="stat-info-w3ls">
+													<h4 class="agileits w3layouts">Audio{{total_auds|pluralize}}</h4>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-3 stats-grid agileits w3layouts stats-grid-3">
+												<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='{{total_imgs}}' data-delay='3' data-increment="1">{{total_imgs}}</div>
+												<div class="stat-info-w3ls">
+													<h4 class="agileits w3layouts">Image{{total_imgs|pluralize}}</h4>
+												</div>
+											</div>
+											<div class="col-md-3 col-sm-3 stats-grid stats-grid-4 agileits w3layouts">
+												<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='{{total_pdfs}}' data-delay='3' data-increment="1">{{total_pdfs}}</div>
+												<div class="stat-info-w3ls">
+													<h4 class="agileits w3layouts">Pdf{{total_pdfs|pluralize}}</h4>
+												</div>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Starts-Number-Scroller-Animation-JavaScript -->		
+								<script type="text/javascript" src="{% static 'contactpage/js/numscroller-1.0.js' %}"></script>
+								<!-- //Starts-Number-Scroller-Animation-JavaScript -->
+
+								<!-- //Stats -->
+
+
+
+
+
+
+
+
+
+
+							</div><!--  container -->
+							<script type="text/javascript">
+								function myload () {
+									alert("~~ When Required @Content-Type and @File-Size Are Entered Correctly, Your Upload Starts In A Moment! NOTE:: Larger Files Take Greater Time To Upload. Please, Sit Back And Wait Patiently. Click OK To Wait...." 
+
+										)
+								}
+							</script>
+
+							<script>
+								$(document).ready(function() {
+ 	// $("small#blockq").tooltip(
+  //     {show:{effect:"pulsate", duration:800}}
+  //     {hide:{effect:"bounce", duration:800}}
+ 	// 	)
+ 	$(window).load(function(){
+ 		$("#meat").hide()
+ 	})
+ 	$("small#blockq").hover(function(){
+ 		// body... 
+ 		$("#contentt").fadeToggle(2500);
+ 	})
+ });
+
+</script>
+</div>
+{% endblock content %}

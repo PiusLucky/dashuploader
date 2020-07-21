@@ -1,0 +1,71 @@
+  {% load static %}
+  {% load crispy_forms_tags %}
+
+  <style type="text/css">
+    h4#myModalLabel{
+      border-style: dashed;
+      border-width: 5px;
+      border-color: whitesmoke;
+      margin-right: 420px;
+      padding-left: 15px;
+    }
+    div#fuccka{
+      background:url("{% static 'images/BackgroundImages/A4.jpg/' %}" );
+      color: white;
+    }
+    label.control-label{
+      color: white;
+      font-weight: bold;
+
+
+    }
+    p#hint_id_Image.help-block{
+     color: whitesmoke; 
+   }
+ </style>
+
+
+     <p align="middle" class="hidden-xs"><img src="{% static 'logo/logos.jpg' %}" width="80" style="border-style: ridge; border-right-style: groove; border-bottom-style: groove; border-width: 3px;"></p>
+
+      <style type="text/css">
+
+        #peoples_view2{
+          background-color: black;
+          color: whitesmoke;
+          padding-left: 15px;
+          padding-right: 15px;
+
+
+        }
+
+      </style>
+      <h5 align="middle"><b id="peoples_view2"><i class="fa fa-info-circle" aria-hidden="true"></i> &nbsp;Take A Moment To Evaluate DashNG Super</h5><hr></b>
+      
+      <br>
+      <style type="text/css">
+        #submit,#closebutt {
+          font-size: 12px;
+          display: block;
+          height: 30px;
+          width: 115px;
+          background-color: #148F77;
+          color: #FFF;
+          border: none;
+          font-weight: bold;
+          cursor: pointer;
+          text-transform: uppercase;
+        }
+
+        #submit,#closebutt:hover{
+          background: #f26649;
+          border: 1px solid #f26649;
+        }
+      }
+
+    </style>
+    <form action="" method="post" enctype="multipart/form-data">    {{ say_somethingForm|crispy }}    {% csrf_token %}  
+      <p align="middle"><input type="submit" id="submit" value="GO! "></p>  
+    </form> 
+    <div class="modal-footer">
+      <p align="right"><button type="button"  id="closebutt"><i class="fa fa-window-close" aria-hidden="true"></i> &nbsp;Close</button></p>
+

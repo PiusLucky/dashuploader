@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style type="text/css">
+  .profileback{
+    background: url("{% static '/contactpage/images/try1.jpg' %}");
+    color: whitesmoke;
+  }
+</style>
+<div class="container">
+<div class="row">
+  <div class="col-md-6">
+    {% if say_success %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <strong><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;{{say_success}}</strong>
+    </div>
+    {% endif %}
+    {% if say_error%}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <strong>{{say_error}}</strong> 
+    </div>
+    {% endif %}
+    <h4 class="profileback">
+      <hr>
+      <div class="media">
+        <div class="media-left media-middle">
+          <a href="#">
+          {% if  user.userprofile.image %}
+          <div class="history-grid-image">
+            <img  src="{{ user.userprofile.image.url }}" alt="Profile image of {{user}} " width="300" height="300" class="zoom-img" >
+          </div>
+          {% else %}
+           <div class="history-grid-image">
+            <img  src="{% static 'base/All/no_image.png' %}" alt="Profile image of {{user}} " width="300" height="300" class="zoom-img">
+          </div>
+         
+          {% endif %}
+         
+          
+          </a>
+        </div>
+        <div class="container media-body">
+          <h5 class="media-heading"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;Name | {{user}} |</h5><br>
+          <h5 class="media-heading"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;Email | {{user.email}} |</h5><br>
+          <h5 class="media-heading"><i class="fa fa-mobile" aria-hidden="true"></i>&nbsp;Phone | {{user.userprofile.phone}} |</h5><br>
+          <h5 class="media-heading"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;City | {{user.userprofile.city}} |</h5><br>
+          <h5 class="media-heading">
+          {% if free_status %}<i class="fa fa-star-o" aria-hidden="true" title="Free User Badge"></i>{% endif %}
+                                              <!--Use this for Premium Users -->
+          <!-- {% if premium_status %}<i class="fa fa-star" aria-hidden="true" style="color: gold;"  title="Premium User Badge"></i>{% endif %} -->
+          &nbsp;Status | {{free_status}} |</h5><br>
+          <hr>
+          <a href="{% url 'BeginningDash:edit_profile'  %}"><button class="btn btn-block btn-info" type="button" style="border-left-style: ridge; border-left-width: 3px; border-left-color: black; border-bottom-left-radius: 4px; border-right-style: groove; border-right-width: 3px; border-right-color: black;" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Edit</button></a>
+          <hr>
+
+          
+        </div>
+      </div>
+      <hr>
+     
+    </h4> 
+  </div>
+  <hr>
+  <div class="col-md-6" id="adminnews">
+   {% for item in Admin_news %}
+   <div class="list-group">
+    <a href="#" class="list-group-item active">
+      <h4 class="list-group-item-heading"><span class="pull-left"><span class="glyphicon glyphicon-envelope"></span>&nbsp;{{ item.Heading }}&nbsp; <span class="badge">{{item.id}}</span></span></h4> <span class="pull-right"><b><i class="fa fa-calendar-check-o" aria-hidden="true"></i>&nbsp;{{item.date}}</b></span><br><br>
+      <b><i class="fa fa-tags" aria-hidden="true"></i>&nbsp;Category&nbsp;<span class="glyphicon glyphicon-arrow-right"></span></b>&nbsp;{{item.importance}}
+      <p><span class="list-1group-item-text pull-left">{{ item.News|safe }}<i class="fa fa-bullhorn" aria-hidden="true" ></i>&nbsp;By {{item.Name}}</span>
+        <span class="pull-right"> <i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;{{item.time}}</span></p>
+
+      </a>
+    </div>
+    {% endfor %}
+    {% if messages %}  
+    <ul class="messages">    
+      {% for message in messages %}     
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong><i class="fa fa-check-circle-o" aria-hidden="true"></i> {{ message }}</strong>
+      </div>
+      {% endfor %}  
+    </ul> 
+    {% endif %}
+    <button type="button" class="btn btn-primary btn-lg btn-block" id="revbutt">
+      <i class="fa fa-connectdevelop" aria-hidden="true"></i>&nbsp;Review DashNG
+    </button>
+  </div>
+</div>
+<hr>
+<!-- ________________________________________________________ for review though setting initial display to none -->
+<div class="col-md-6" id="review" style="display:none;">
+  {% include 'partials/reviewmodal.html' %}
+</div>
+</div>
+<hr>
+<!-- ________________________________________________________//for review -->
+</div> <!-- for row -->
+
+<!-- ________________________#row two -->
+<!-- Testimonials -->
+<section class="testimonials text-center bg-light">
+  <div class="container">
+
+    <div class="row">
+     <h2 align="middle" class="hidden-sm hidden-xs hidden-md" style="font-family: 'black_ops_oneregular';">What People Are Saying About DashNG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h2>
+     <h2 align="middle" class="hidden-lg" style="font-family: 'black_ops_oneregular';">What People Are Saying About DashNG</h2>
+     <hr>
+     {% for items in peoples_view %}
+
+     <div class="col-lg-3">
+
+      <div>
+        <img class="img-circle img-responsive" src="{{items.Photo.url}}" alt="">
+        <h5><b>{{items.Name}}</b></h5>
+        <p>"{{ items.Comment}}"</p>
+      </div>
+    </div>
+    {% endfor %}
+    {% for items in peoples_view1 %}
+    <div class="col-lg-3">
+      <div>
+        <img class="img-circle img-responsive" src="{{items.Photo.url}}" alt="">
+        <h5><b>{{items.Name}}</b></h5>
+        <p>"{{ items.Comment}}"</p>
+      </div>
+    </div>
+    {% endfor %}
+    {% for items in peoples_view2 %}
+    <div class="col-lg-3">
+      <div>
+        <img class="img-circle img-responsive" src="{{items.Photo.url}}" alt="">
+        <h5><b>{{items.Name}}</b></h5>
+        <p>"{{ items.Comment}}"</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ________________________#endrow two -->
+<hr>
+</div>
+{% endblock content %}}

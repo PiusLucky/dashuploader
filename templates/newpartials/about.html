@@ -1,0 +1,108 @@
+{% load static %}
+<!-- about -->
+<style type="text/css">
+	img.zoom-img:hover{
+		border-radius: 5px;
+	}
+</style>
+<div class="about-w3layouts">
+
+	<div class="container">
+		<div class="hidden-xs ">
+			<div class="col-md-6 col-sm-6 gallery-grids agileits w3layouts gallery-grids1 wow slideInLeft">
+				<div class="gallery-grid-images agileits w3layouts">
+					<div class="col-md-4 col-sm-4 gallery-grid gallery-grid-1 history-grid-image">
+						<img src=" {% static 'contactpage/images/bitimage.jpg' %}" alt="bitimage" class="zoom-img">
+					</div>
+					<div class="col-md-4 col-sm-4 gallery-grid gallery-grid-2 history-grid-image">
+						<img src=" {% static 'contactpage/images/chartimage.jpg' %}" alt="chartimage" class="zoom-img">
+					</div>
+					<div class="col-md-4 col-sm-4 gallery-grid gallery-grid-3 history-grid-image">
+						<img src=" {% static 'contactpage/images/itelimage.jpg' %}" alt="itelimage" class="zoom-img">
+					</div>
+
+					<div class="col-md-4 col-sm-4 gallery-grid gallery-grid-4 history-grid-image">
+						<img src=" {% static 'contactpage/images/analysis.jpg' %}" alt="analysis" class="zoom-img">
+					</div>
+					<div class="col-md-4 col-sm-4 gallery-grid gallery-grid-5 history-grid-image">
+						<img src=" {% static 'contactpage/images/litimage.jpg' %}" alt="litimage" class="zoom-img">
+					</div>
+					<div class="col-md-4 col-sm-4 gallery-grid gallery-grid-6 history-grid-image">
+						<img src=" {% static 'contactpage/images/dashimage.jpg' %}" alt="dashimage" class="zoom-img">
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<div class="hidden-lg hidden-md hidden-sm">
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+    <!-- #i dont want indicators -->
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+  <style type="text/css">
+  	#myborder{
+  		border-radius: 5px;
+  		border-color: black;
+  		border-width:4px;
+  		border-style: solid;
+  	}
+  </style>
+    <div class="item active">
+    <div>
+		<img src=" {% static 'contactpage/images/chartimage.jpg' %}" alt="chartimage" class="zoom-img" id="myborder">
+		</div>    
+    </div>
+    <div class="item">
+		<div>
+	    <img src=" {% static 'contactpage/images/bitimage.jpg' %}" alt="bitimage" class="zoom-img" id="myborder">
+	   </div> 
+    </div>
+    <div class="item">
+		<div>
+	   <img src=" {% static 'contactpage/images/itelimage.jpg' %}" alt="itelimage" class="zoom-img" id="myborder">
+	   </div> 
+    </div>
+    <div class="item">
+		<div>
+	    <img src=" {% static 'contactpage/images/analysis.jpg' %}" alt="analysis" class="zoom-img" id="myborder">
+	   </div> 
+    </div>
+    <div class="item">
+		<div>
+	    <img src=" {% static 'contactpage/images/litimage.jpg' %}" alt="litimage" class="zoom-img" id="myborder">
+	   </div> 
+    </div>
+     <div class="item">
+		<div>
+	    <img src=" {% static 'contactpage/images/dashimage.jpg' %}" alt="dashimage" class="zoom-img" id="myborder">
+	   </div> 
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+		</div>
+
+		<div class="col-md-6 col-sm-6 gallery-grids agileits w3layouts gallery-grids2 wow slideInRight">
+			<h2 class="tittle-agileits-w3layouts">About <span style="color: gold;">DASHNG super</span> </h2>
+			<h5><i class="fa fa-th-large" aria-hidden="true"></i>&nbsp;WHO WE ARE&nbsp; <i class="fa fa-usb" aria-hidden="true"></i>&nbsp;WHAT WE DO</h5>
+			<p class="para-w3-agile">	DashNG Super renders pages at a very fast speed, our unique traffic regulators make this possible. You get the best simply by using our services. This enhances the medium through which we take in protecting or saving your file(s) for the future. 
+			</p>
+			<p class="para-w3-agile">Our database is watched constantly to prevent any form of illegal or illicit affairs, we do this to protect our members against threat and against themselves. The dynamicity of our database shows clearly when actions referred to as "illicit" is initiated...... </p>
+			<a href="{% url 'BeginningDash:aboutfornonuser' %}" class="button-w3layouts hvr-rectangle-out">know more</a>
+		</div>
+		<div class="clearfix"></div>
+
+	</div>
+</div>
+	<!-- //about -->

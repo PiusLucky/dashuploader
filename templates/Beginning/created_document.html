@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+ 
+{% load static %}
+{% include 'LoadingGif/loadinggif.html' %}
+{% block content %}
+
+{% for doc in upload  %}
+
+  {{ doc.id }}
+
+{% endfor %}
+
+{% endblock content %}

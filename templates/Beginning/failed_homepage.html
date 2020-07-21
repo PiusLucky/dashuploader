@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block notice %}
+<hr>
+{% if request.method == POST %}
+{% if form.errors %}
+<div class="alert alert-warning" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fa fa-hand-o-left" aria-hidden="true"></i></span></button>
+	<strong><i class="fa fa-warning" aria-hidden="true"></i>&nbsp;opps!! </strong> An error ocurred, check fields and <a href="{% url 'BeginningDash:home' %}" class="alert-link">try again.</p></a>
+</div>
+
+{% endif %}
+{% endif %}
+
+<hr>
+{% endblock notice %}

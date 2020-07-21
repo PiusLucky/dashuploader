@@ -1,0 +1,46 @@
+<!--footer-->
+<div class="footer w3layouts">
+  <div class="container">
+    <div class="footer-row w3layouts-agile">
+      <div class="col-md-4 footer-grids w3l-agileits">
+        <h6><a href="index.html">DashNG~VS</a></h6>
+        <p class="footer-one-w3ls">Our primary agenda is secure your files for the future. You can get in touch with us anytime via our social media platforms. </p>
+        <div class="top-header-agile-right">
+          
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="col-md-2 footer-grids w3l-agileits">
+        <h3><span class="glyphicon glyphicon-th-large" style="color: orange; font-size: 18px;"></span>&nbsp;Content</h3>          
+        <ul class="b-nav">
+        <!-- #i think i will use javascript here
+        Failed  attempt ... null  -->
+        <!--   Trying another initiated -->
+
+        <li><a href="{% url 'BeginningDash:home' %}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</a></li>
+        {% if request.user.is_authenticated %}
+        <li  {% if request.path == aboutus %} class="active" {% endif %}><a href="{% url 'BeginningDash:aboutus' %}"><span class="glyphicon glyphicon-globe"></span> About Us and Sponsoring</a></li>
+
+        {% else %}
+        <li  {% if request.path == aboutfornonuser %} class="active" {% endif %}><a href="{% url 'BeginningDash:aboutfornonuser' %}"><span class="glyphicon glyphicon-globe"></span> About Us and Sponsoring</a></li>
+
+        {% endif %}
+        {% if request.user.is_authenticated %}
+        <li  {% if request.path == contact %} class="active" {% endif %}><a href="{% url 'BeginningDash:contact' %}" data-hover=""><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Contact Us</a></li>
+        {% else %}
+        <li  {% if request.path == mycontact4offlineuser %} class="active" {% endif %}><a href="{% url 'BeginningDash:mycontact4offlineuser' %}" data-hover=""><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Contact Us</a></li>
+        {% endif %}
+
+      </ul>
+    </div>
+    <div class="col-md-3 footer-grids w3l-agileits">
+      <h3><span class="glyphicon glyphicon-bullhorn" style="color:orange; font-size: 18px;"></span>&nbsp;Contact Info</h3>
+      <p>+2349062360533</p>
+      <p><a href="dashngsuper@gmail.com">support@dashngsuper.com</a></p>
+ 
+    </div>
+    <div class="clearfix"> </div>
+  </div>
+</div>
+</div>
+<!--//footer--> 

@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<hr>
+<style type="text/css">
+	div#scarf{
+			margin-left: -26px;
+			padding-right:-30px;
+			margin-right:30px;
+		}
+	div#scarf2{
+		margin-left: -26px;
+		margin-right:-25px;
+		
+}
+</style>
+<div class="container">
+{% include 'partials/marquee.html' %}
+
+<div class="row">
+	<div class="col-md-5">
+		{% if request.method == 'GET' %}
+		<div style="display: none;"><img id="meat" src="{% static 'gif/scanningwoohoo.gif' %}" class="img-responsive" alt="Responsive image"></div><br>
+		{% endif %}
+		
+		<p><strong><i class="fa fa-codepen" aria-hidden="true"></i> HEY <span style="text-transform: uppercase; font-family: 'black_jackregular';">CODER,</span> PLEASE ADD YOUR FILES HERE </strong></p>
+			<br><br> {% if request.method == 'POST' %}<a href="{% url 'BeginningDash:home'%}"><b> <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;upload again!</b></a>{% endif %}</p>
+		<br>
+		{% include 'partials/custommessage.html' %}		
+		<form action="." method="post" enctype="multipart/form-data" id="uploadform">    {{ UMCU_form|crispy }}  {% csrf_token %}
+			<br>
+			{% if request.method == 'POST' %}
+			{% if not UMCU_form.errors %}
+			<div class="progress">
+				<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 100%;">
+					<span class="pull-left">&nbsp;Uploaded Successfully!!</span><span class="pull-right">100 of 100%&nbsp; </span>
+				</div>
+			</div>
+			{% else %}
+			<!-- empty -->
+			{% endif %}
+			{% endif %}
+			<br>
+			<hr> 
+
+			{% if request.method == 'GET' %}  
+			<p><span class="pull-left">
+				<button type="submit" class="btn btn-primary btn-xs" id="uploadsubmit" onclick="myload()">Upload All&nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i></button> </span>
+				<span class="pull-right">
+					<button type="reset" class="btn btn-primary btn-xs ">Clear&nbsp;<i class="fa fa-undo" aria-hidden="true"></i></button></span></p>  
+					{% endif %}
+
+					{% if request.method == 'POST' %}
+					{% if not UMCU_form.errors %}
+					<p><span class="pull-left">
+						<button type="submit" class="btn btn-primary btn-xs disabled" id="uploadsubmit" onclick="myload()"><i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;Upload All</button> </span>
+						<span class="pull-right">
+							<a href="{% url 'BeginningDash:allfiles' %}"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Download Sum. PDF</button></a></span></p>    
+							{% else %}
+							<p><span class="pull-left">
+								<button type="submit" class="btn btn-primary btn-xs" id="uploadsubmit" onclick="myload()"><i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;Upload All</button> </span>
+								<span class="pull-right">
+									<button type="button" class="btn btn-primary btn-xs disabled"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Download Sum. PDF</button></span></p>  
+									{% endif %}
+									{% endif %}
+								</form>
+								<br>
+								<hr>
+
+							</div>
+
+
+							<div class="col-md-4">
+								<!-- FOR VIDEOS -->
+								 <!-- FOR HTML -->
+			                  <p>
+					         <button class="btn btn-info btn-md btn-block" type="button" data-toggle="collapse" data-target="#forhtml" aria-expanded="false" aria-controls="collapseExample">
+							  <i class="fa fa-html5" aria-hidden="true"></i>&nbsp;<small>Uploaded HTML</small>
+							</button>
+							  </p>
+							{% include 'partials/well_4_html.html' %}
+							
+			                <!--    FOR CSS -->
+			                <p>
+							 <button class="btn btn-warning btn-md btn-block" type="button" data-toggle="collapse" data-target="#forcss" aria-expanded="false" aria-controls="collapseExample">
+							  <i class="fa fa-css3" aria-hidden="true"></i>&nbsp;<small>Uploaded CSS</small>
+							</button>
+							  </p>
+
+							{% include 'partials/well_4_css.html' %}
+
+
+
+
+								<br>
+								<hr>
+								<BLOCKQUOTE >
+									<style type="text/css">
+										small#blockq:hover{
+											color:whitesmoke;
+											background-image: url("{% static 'base/Home/b1.jpg' %}") ;
+											background-repeat: no-repeat;
+
+											padding: 5px;
+											border-radius: 5px;
+											border-style: groove;
+											border-right-style: ridge;
+											border-bottom-style: ridge;
+
+										}
+									</style>
+									{% include 'partials/ceospeaks.html' %}
+
+
+
+								</div>
+
+							</div> 
+							<div >	
+								<style type="text/css">
+									img#contentt{border-radius: 10px; 
+										border-bottom-style:ridge; 
+										border-top-style: groove; 
+										border-width: 5px;
+									}
+								</style>
+
+							</div>
+						</div><!--  container -->
+						<script type="text/javascript">
+							function myload () {
+								alert("~~ When Required @Content-Type and @File-Size Are Entered Correctly, Your Upload Starts In A Moment! NOTE:: Larger Files Take Greater Time To Upload. Please, Sit Back And Wait Patiently. Click OK To Wait...." 
+
+									)
+							}
+						</script>
+
+						<script>
+							$(document).ready(function() {
+ 	// $("small#blockq").tooltip(
+  //     {show:{effect:"pulsate", duration:800}}
+  //     {hide:{effect:"bounce", duration:800}}
+ 	// 	)
+ 	$(window).load(function(){
+ 		$("#meat").hide()
+ 	})
+ 	$("small#blockq").hover(function(){
+ 		// body... 
+ 		$("#contentt").fadeToggle(2500);
+ 	})
+ });
+
+</script>
+</div>
+{% endblock content %}

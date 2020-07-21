@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-md-12">
+<style type="text/css">
+	div#scarf{
+			margin-left: -26px;
+			padding-right:-30px;
+			margin-right:30px;
+		}
+	div#scarf2{
+		margin-left: -26px;
+		margin-right:-25px;
+		
+}
+</style>
+<div class="container">{% include 'partials/marquee4gallery.html' %}</div>
+	
+
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-6">
+    <div align="middle">
+    <div style="background-color: black; color: whitesmoke;border-radius: 5px;y">You Have {{total_vids}} Video{{total_vids|pluralize}} </div>
+	<h3 style="background-color: black; color: whitesmoke; border-width: 5px; border-style: groove; font-family: 'black_ops_oneregular'; "><span class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;VIDEOS</h3>
+	<p> 
+	{% for item in item %}
+	  {% if item.vids %}
+	  <b>{{item.vids|linebreaks|slice:"11:"}}</b>
+        <div class="embed-responsive embed-responsive-16by9">
+                <video controls class="embed-responsive-item" preload="metadata" src='{{ item.vids.url }}' style="border-radius: 10px; border-style: groove;border-width: 3px;"></video>
+        </div><br>
+         <hr>
+        <hr>
+        {% endif %}
+        {% empty %}
+        <div class="well well-sm"><p align="middle">Your Video Gallery Is Empty, <a href="{% url 'BeginningDash:home' %}"> Upload Videos</a> To See Them Here!</p></div>
+        
+       {% endfor %}
+
+	</p>
+	</div> <!-- for align middle -->
+</div>
+<div class="col-md-3">
+<div align="middle">
+	<h3 style="background-color: black; color: whitesmoke; border-width: 5px; border-style: groove; font-family: 'black_ops_oneregular'; "><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;IMAGES&nbsp;<span class="badge" style="color: gold; background-color: black;">NEW</span></h3>
+	<p>
+		{% for item in item|slice:":2" %}
+	     {% if item.imgs %}
+	  
+	    <div class="row">
+		  <div class="col-sm-6 col-md-12">
+		    <div class="thumbnail">
+		              <img src="{{item.imgs.url}}"><br>
+		      <div class="caption">
+		       {{item.imgs|linebreaks|slice:"11:"}}
+		      </div>
+		    </div>
+		  </div>
+		</div>
+        <hr>
+        <hr>
+        {% endif %}
+         {% empty %}
+        <div class="well well-sm"><p align="middle">No New Images, <a href="{% url 'BeginningDash:home' %}"> Upload Images</a> To See Them Here!</p></div>
+        
+       {% endfor %}
+	</p>
+</div> <!-- for align middle -->
+</div>
+
+
+<div class="col-md-3">
+<div align="middle">
+	<h3 style="background-color: black; color: whitesmoke; border-width: 5px; border-style: groove; font-family: 'black_ops_oneregular'; "><i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;IMAGES&nbsp;<span class="badge" style="color: red; background-color: black;">OLD</span></h3>
+	<p>
+		{% for item in item|slice:"5:" %}
+	     {% if item.imgs %}
+	  
+	    <div class="row">
+		  <div class="col-sm-6 col-md-12">
+		    <div class="thumbnail">
+		              <img src="{{item.imgs.url}}"><br>
+		      <div class="caption">
+		       {{item.imgs|linebreaks|slice:"11:"}}
+		      </div>
+		    </div>
+		  </div>
+		</div>
+        <hr>
+        <hr>
+        {% endif %}
+         {% empty %}
+        <div class="well well-sm"><p align="middle">No old Images, <a href="{% url 'BeginningDash:home' %}"> Upload Images</a> To See Them Here!</p></div>
+        
+       {% endfor %}
+	</p>
+
+</div> <!-- for align middle -->
+
+</div>
+</div> <!-- for row -->
+</div>
+<hr>
+<hr>
+{% endblock content %}

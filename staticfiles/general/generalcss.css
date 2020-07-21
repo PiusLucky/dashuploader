@@ -1,0 +1,81 @@
+div#infomssg{
+			padding-top: 15px;
+			padding-right: 15px;
+		}
+h1#headin{
+						font-family: 'black_ops_oneregular';
+					}
+sub#sub{
+font-family: 'black_jackregular';
+}
+
+button#smash{
+			outline: none;
+			color: #fff;
+			padding: 0.7em 5em;
+			font-size: 1.1em;
+			-webkit-appearance: none;
+			background: #095880;
+			transition: 0.5s all;
+			-webkit-transition: 0.5s all;
+			transition: 0.5s all;
+			-moz-transition: 0.5s all;
+			border-radius: 20px;
+			-webkit-border-radius: 26px;
+			-ms-border-radius: 26px;
+			-moz-border-radius: 26px;
+			-o-border-radius: 26px;
+		}
+button#smash:hover{
+	cursor: pointer;
+	color: gold;
+	background-color: black;
+	text-decoration: underline;
+	text-decoration-color: black;
+}
+
+button#topsmash:hover{
+							color: gold;
+							background-color: black;
+
+					}
+button#topsmash{
+	margin: 5px;
+	background-color: #095880;
+	
+}
+h1#headin{
+						font-family: 'black_ops_oneregular';
+					}
+sub#sub{
+	font-family: 'black_jackregular';
+}
+
+button.btn.btn-default{
+   color: white;
+	background-color: green;
+}
+button.btn.btn-default:hover{
+	cursor: pointer;
+	color: red;
+	background-color: black;
+	border-style:groove;
+	border-color: white;
+	border-radius: 2px;
+	border-width: 2px;
+}
+hr#hori{
+	border-color: green;
+
+}
+
+span#vidname{color: blue;
+		         	
+}
+
+span#vidname:hover{
+	color: red;
+	cursor: pointer;
+		         	
+}
+

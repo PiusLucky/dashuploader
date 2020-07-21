@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+<title>{{title}} | DashNG~Vs.</title>
+<!-- Meta-Tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Scholar Vision Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Meta-Tags -->
+<!-- Custom-Stylesheet-Links -->
+<!-- Bootstrap-CSS --> <link href="{% static 'contactpage/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- Font-awesome-CSS --> <link href="{% static 'contactpage/css/font-awesome.css' %}" rel="stylesheet"> 
+<!-- Index-Page-CSS --><link href="{% static 'contactpage/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- //Custom-Stylesheet-Links -->
+<!--web-fonts-->
+<!-- Headings-font --><link href="//fonts.googleapis.com/css?family=Hind+Vadodara:300,400,500,600,700" rel="stylesheet">
+<!-- Body-font --><link href="//fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+<!--//web-fonts-->
+<!--//fonts-->
+<!-- js -->
+<!-- myfontawesome--><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+{% include 'newpartials/banner2.html' %}
+<div class="container" align="middle">
+	 {% if confirm_message %}
+	 <div class="well well-sm" style="background:black;color: gold;"><i class="fa fa-envelope-square" aria-hidden="true"></i>&nbsp;{{confirm_message }}</div>
+	 {% endif %}
+</div>
+<!-- contact -->
+	<div class="contact">
+		<div class="container">
+			<h3 class="tittle-agileits-w3layouts">Get in touch</h3>
+			<div class="agile_banner_bottom_grids">
+				<div class="col-md-4 w3_agile_contact_grid">
+					<div class="col-xs-4 agile_contact_grid_left">
+						<i class="fa fa-map-marker" aria-hidden="true"></i>
+					</div>
+					<div class="col-xs-8 agile_contact_grid_right agilew3_contact">
+						<h4>Aim</h4>
+						<p>Save freely and smile in long terms.</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-4 w3_agile_contact_grid">
+					<div class="col-xs-4 agile_contact_grid_left agileits_w3layouts_left">
+						<i class="fa fa-mobile" aria-hidden="true"></i>
+					</div>
+					<div class="col-xs-8 agile_contact_grid_right agileits_w3layouts_right">
+						<h4>Phone</h4>
+						<p>+2349062360533<span>+2348181432187</span></p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-4 w3_agile_contact_grid">
+					<div class="col-xs-4 agile_contact_grid_left ">
+						 <i class="fa fa-envelope-o" aria-hidden="true"></i>
+					</div>
+					<div class="col-xs-8 agile_contact_grid_right ">
+						<h4>Email</h4>
+						<p><a href="mailto:dashngsuper@gmail.com">support@dashngsuper.com</a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+				<style type="text/css">
+					.w3_agileits_contact_right_by_lucky_p input[type="reset"] {
+					    border: none;
+					    outline: none;
+					    width: 100%;
+					    background-color:grey;
+					    display: block;
+					    padding: 0.8em;
+					    font-size: 19px;
+					    color: #fff;
+					}
+					.w3_agileits_contact_right_by_lucky_p input[type="reset"]:hover {
+					    background-color:  black;
+}
+				</style>
+
+				<div>
+				<br>
+				<hr>
+					<h1 align="middle" style="font-weight: bold; font-family: italic;"><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;Contact Form</h1>
+					<form method="post">
+					{% csrf_token %}
+					{{ ContactXForm.as_p }}
+					<button type="submit" class="btn btn-primary btn-md btn-block"><i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp;SEND</button>
+					</form>
+				</div>
+				<hr>
+
+	</div>
+	<div class="container">
+	<div class="map-agileits">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24804.011287515073!2d-77.42088058957434!3d39.00387414146245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b6384f20fb61ad%3A0x5bfd0cf0a55864c!2sSterling%2C+VA%2C+USA!5e0!3m2!1sen!2sin!4v1487219294651"></iframe>
+	</div>
+	</div>
+	<hr>
+<!-- //contact -->
+{% include 'newpartials/footer.html' %}
+ <!-- copy-right -->
+  <div class="copyright-wthree">
+    <p>&copy; 2018 DashNG~Vs. All Rights Reserved | Design by <a href="{% url 'BeginningDash:home' %}"> DashNG Team </a></p>
+  </div>
+  <!-- //copy-right -->
+	<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+
+	
+<script type="text/javascript" src="{% static 'contactpage/js/jquery-2.1.4.min.js' %}"></script>
+<!--search-bar-->
+		<script src="{% static 'contactpage/js/main.js' %}"></script>	
+<!--//search-bar-->
+ <!-- start-smoth-scrolling -->
+<script type="text/javascript" src="{% static 'contactpage/js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'contactpage/js/easing.js' %}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+    
+  <!-- Dropdown-Menu-JavaScript -->
+      <script>
+        $(document).ready(function(){
+          $(".dropdown").hover(            
+            function() {
+              $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+              $(this).toggleClass('open');        
+            },
+            function() {
+              $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+              $(this).toggleClass('open');       
+            }
+          );
+        });
+      </script>
+    <!-- //Dropdown-Menu-JavaScript -->
+<!--js for bootstrap working-->
+	<script src="{% static 'contactpage/js/bootstrap.js' %}"></script>
+<!-- //for bootstrap working -->
+</body>
+</html>

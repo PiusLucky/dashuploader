@@ -1,0 +1,53 @@
+			
+{% if file_error_message %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true" style="color: black;"></i></span></button>
+	<strong><i class="fa fa-warning" aria-hidden="true" ></i>&nbsp;{{ file_error_message  }}</strong>
+</div>
+{% endif %}
+
+{% if file_success_message %}
+<div class="alert alert-success alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true" style="color: black;"></i></span></button>
+	<strong><i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;{{ file_success_message }}</strong>
+</div>
+{% endif %}
+{% if myerrormessage %}
+<div class="alert alert-danger alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true" style="color: black;"></i></span></button>
+	<strong><i class="fa fa-warning" aria-hidden="true" ></i>&nbsp;{{ myerrormessage  }}</strong>
+</div>
+{% endif %}
+
+{% if mysuccessmessage %}
+<div class="alert alert-success alert-dismissible" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true" style="color: black;"></i></span></button>
+	<strong><i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;{{ mysuccessmessage }}</strong>
+</div>
+{% endif %}
+{% if error_msg %}
+<div class="alert alert-danger alert-dismissible" role="alert" align="middle">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true" style="color: black;"></i></span></button>
+	<strong><i class="fa fa-warning" aria-hidden="true" ></i>&nbsp;{{ error_msg }}</strong>
+</div>
+{% endif %}
+
+
+
+{% if success_msg %}
+<div class="alert alert-success alert-dismissible" role="alert" align="middle">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true" style="color: black;"></i></span></button>
+	<strong><i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;{{ success_msg }}</strong>
+</div>
+{% endif %}
+
+
+
+
+ <script>
+ $(document).ready(function() {
+ 	$(window).load(function(){
+ 		$("#mywork").hide()
+ 	})
+ 	});
+ </script>

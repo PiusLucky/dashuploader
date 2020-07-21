@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="col-md-12"> 
+	<table  class="table table-condensed" border='1' cellpadding='10' cellspacing='10' > 
+		<tr>
+			<th colspan='3'><p align="middle"><b  class="warning"><button class="btn btn-info disabled" type="button">
+			<b>FILE SUMMARY</b> <span class="badge">{{total_files}}</span>
+			</button></b></p></th>
+		</tr>
+		<tr class="warning">
+			<th> DATA TYPE </th>
+			<th>DATE-TIME CREATED</th>
+			<th>FILES</th>
+		</tr>
+		<tr class="info">
+			<td>File Group(ID)</td>
+			<td>{% for item in item %}
+				{% if item.creates %}
+				<span class="glyphicon glyphicon-time"></span>&nbsp;{{item.creates}}<br>
+				{% endif %}
+				{% endfor %}
+			</td>
+			<td>{% for item in item %}
+				{% if item.file_g %}
+				<i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp;{{item.file_g}}<br>
+				{% endif %}
+				{% endfor %}
+			</td> 
+		</tr>
+             <style type="text/css">
+             	.bulb{
+             		color: orange;
+             	}
+             </style>
+		<tr class="warning">
+			<td>VIDEOS</td>
+			<td><i class="fa fa-lightbulb-o bulb" aria-hidden="true"></i>&nbsp;{{total_vids}}&nbsp;Video{{total_vids|pluralize}}</td>
+			<td>
+
+				{% for item in item %}
+				{% if item.vids %}
+				<span class="glyphicon glyphicon-film"></span>&nbsp;{{item.vids|linebreaks|slice:"11:"}}
+				{% endif %}
+				{% endfor %}
+
+			</td>
+			<tr class="info">
+				<td>AUDIOS</td>
+				<td><i class="fa fa-lightbulb-o bulb" aria-hidden="true"></i>&nbsp;{{total_auds}}&nbsp;Audio{{total_auds|pluralize}}</td>
+				<td>{% for item in item %}
+					{% if item.auds %}
+					<span class="glyphicon glyphicon-headphones"></span>&nbsp;{{item.auds|linebreaks|slice:"11:"}}
+					{% endif %}
+					{% endfor %}
+				</td>
+			</tr> 
+			<tr class="warning">     
+				<td>IMAGES</td>   
+				<td><i class="fa fa-lightbulb-o bulb" aria-hidden="true"></i>&nbsp;{{total_imgs}}&nbsp;Image{{total_imgs|pluralize}}</td>  
+				<td>{% for item in item %}
+					{% if item.imgs %}
+					<span class="glyphicon glyphicon-picture"></span>&nbsp;{{item.imgs|linebreaks|slice:"11:"}}
+					{% endif %}
+					{% endfor %}
+				</td> 
+			</tr> 
+			<tr class="warning">     
+				<td>PDFS</td>   
+				<td><i class="fa fa-lightbulb-o bulb" aria-hidden="true"></i>&nbsp;{{total_pdfs}}&nbsp;Pdf{{total_pdfs|pluralize}}</td>  
+				<td>{% for item in item %}
+					{% if item.pdfs %}
+					<i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;{{item.pdfs|linebreaks|slice:"11:"}}
+					{% endif %}
+					{% endfor %}
+				</td> 
+			</tr> 
+			<tr class="warning">     
+				<td>TOTAL</td>   
+				<td><i class="fa fa-file" aria-hidden="true"></i>&nbsp;{{total_total}}&nbsp;File{{total_total|pluralize}}</td>  
+				<td>
+				 <i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp; {{total_files}}&nbsp;Folder{{total_files|pluralize}}&nbsp;<i class="fa fa-arrows-h" aria-hidden="true"></i>&nbsp;<i class="fa fa-file" aria-hidden="true"></i>&nbsp;{{total_total}}&nbsp;File{{total_total|pluralize}}
+				</td> 
+			</tr>  
+		</table>
+	
+	<p>
+	<span class="pull-left">
+			<a href="javascript:history.go(-1)" onMouseOver="self.status.referrer;return true"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-angle-double-left" aria-hidden="true"></i>&nbsp;Go Back</button></a> </span>
+		<span class="pull-right">
+		<a href="{% url 'BeginningDash:pdf' %}"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o" aria-hidden="true" title="DOWNLOAD SUMMARY PDF NOW"></i>&nbsp;Download Sum. PDF</button></a>
+	</span>
+	</p>  
+	<br>
+</div>
+<div class="col-md-12">
+	<hr>
+  <div align="middle" style="background-color: #0081b5; padding: 12px;border-radius: 10px;">
+	<div align="middle" style="color: whitesmoke; font-size:20px; font-weight: bold; font-family: 'satisfyregular'"><i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="font-size: 19px;"></i>
+	<span class="sr-only">Loading...</span>Count Down To Main Event XD
+	</div>
+	 <div style="text-shadow: 1px 15px 7px rgba(0,0,0,0.5); font-size:23px; color: gold;" id="countdown" >
+	   <i class="fa fa-calendar-check-o" aria-hidden="true"></i><span id="days"></span> Days 
+	   <i class="fa fa-arrow-circle-right" aria-hidden="true"></i><span id="hours"> </span> Hours
+	   <i class="fa fa-arrow-circle-right" aria-hidden="true"></i><span id="minutes"> </span>  Minutes
+	   <i class="fa fa-arrow-circle-right" aria-hidden="true"></i><span id="seconds"> </span> Seconds 
+
+
+
+	 </div>
+	 </div>
+	 <br>
+	 <hr>
+	 <script type="text/javascript">
+
+      function countdown(){
+        var now = new Date();
+        var eventDate = new Date(2019,  00,  01, 16, 00,  00, 00)
+
+        var currentTime = now.getTime();
+        var eventTime = eventDate.getTime();
+        
+
+        var remTime = eventTime - currentTime;
+        if (remTime  <= 0  )(
+              $('#countdown').text('HAPPY NEW YEAR LUCKY PIUS!!!! ')
+          )
+        
+
+        var s = Math.floor(remTime / 1000);
+        var m = Math.floor(s / 60);
+        var h = Math.floor(m / 60);
+        var d = Math.floor(h / 24);
+
+        h %= 24;
+        m %= 60;
+        s %= 60;
+
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+
+        document.getElementById("days").textContent = d;
+        document.getElementById("days").innerText = d;
+
+        document.getElementById("hours").textContent = h;
+        document.getElementById("minutes").textContent = m;
+        document.getElementById("seconds").textContent = s;
+
+        setTimeout(countdown, 1000);
+
+        
+      }
+
+      countdown();
+    </script>
+
+
+	
+</div>
+
+
+	{% endblock content %}
