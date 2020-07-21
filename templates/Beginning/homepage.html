@@ -20,9 +20,7 @@
 	{% include 'partials/marquee.html' %}
 
 	<div class="row">
-		<div class="col-md-5">
-			
-			
+		<div class="col-md-5">	
 			<p><strong> WELCOME <span style="text-transform: uppercase; font-family: 'black_jackregular';">{{ cvc }}{{ member}},</span> PLEASE ADD YOUR FILES HERE </strong><br> {% if request.method == 'POST' %}<a href="{% url 'BeginningDash:home'%}"><b> <i class="fa fa-upload" aria-hidden="true"></i>&nbsp;upload again!</b></a>{% endif %}</p>
 			<br>
 			{% include 'partials/custommessage.html' %}<br>
@@ -70,7 +68,7 @@
 						{% if request.method == 'POST' %}
 						{% if not fileupload_form.errors %}
 						<p><span class="pull-left">
-							<button type="submit" class="btn btn-primary btn-xs disabled" id="uploadsubmit" onclick="myload()"><i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;Upload All</button> </span>
+							<button class="btn btn-primary btn-xs disabled" id="uploadsubmit"><i class="fa fa-cloud-upload" aria-hidden="true"></i>&nbsp;Upload All</button> </span>
 							<span class="pull-right">
 								<a href="{% url 'BeginningDash:allfiles' %}"><button type="button" class="btn btn-primary btn-xs"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Download Sum. PDF</button></a></span></p>    
 								{% else %}
@@ -123,12 +121,6 @@
 									</p>
 
 									{% include 'partials/well_4_imgs.html' %}
-
-
-
-
-
-
 									<br>
 									<hr>
 									<BLOCKQUOTE >
@@ -147,11 +139,7 @@
 											}
 										</style>
 										{% include 'partials/ceospeaks.html' %}
-										
-
-
 									</div>
-
 								</div> 
 								<div >	
 									<style type="text/css">
@@ -161,7 +149,6 @@
 											border-width: 5px;
 										}
 									</style>
-
 								</div>
 								<hr>
 
@@ -198,46 +185,29 @@
 										</div>
 									</div>
 								</div>
-								
+
 								<!-- Starts-Number-Scroller-Animation-JavaScript -->		
 								<script type="text/javascript" src="{% static 'contactpage/js/numscroller-1.0.js' %}"></script>
 								<!-- //Starts-Number-Scroller-Animation-JavaScript -->
 
 								<!-- //Stats -->
-
-
-
-
-
-
-
-
-
-
 							</div><!--  container -->
-							<script type="text/javascript">
-								function myload () {
-									alert("~~ When Required @Content-Type and @File-Size Are Entered Correctly, Your Upload Starts In A Moment! NOTE:: Larger Files Take Greater Time To Upload. Please, Sit Back And Wait Patiently. Click OK To Wait...." 
+	<script type="text/javascript">
+		function myload () {
+			alert("~~ When Required @Content-Type and @File-Size Are Entered Correctly, Your Upload Starts In A Moment! NOTE:: Larger Files Take Greater Time To Upload. Please, Sit Back And Wait Patiently. Click OK To Wait...." 
 
-										)
-								}
-							</script>
+				)
+		}
+		$(document).ready(function() {
+			$(window).load(function(){
+				$("#meat").hide()
+			})
+			$("small#blockq").hover(function(){
+		// body... 
+		$("#contentt").fadeToggle(2500);
+	   })
+		});
+	</script>
 
-							<script>
-								$(document).ready(function() {
- 	// $("small#blockq").tooltip(
-  //     {show:{effect:"pulsate", duration:800}}
-  //     {hide:{effect:"bounce", duration:800}}
- 	// 	)
- 	$(window).load(function(){
- 		$("#meat").hide()
- 	})
- 	$("small#blockq").hover(function(){
- 		// body... 
- 		$("#contentt").fadeToggle(2500);
- 	})
- });
-
-</script>
 </div>
 {% endblock content %}
