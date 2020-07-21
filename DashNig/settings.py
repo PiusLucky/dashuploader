@@ -19,25 +19,27 @@ INSTALLED_APPS = [
   'django.contrib.sessions',
   'django.contrib.messages',
   'django.contrib.staticfiles',
-  'storages',
-  'whitenoise.runserver_nostatic',
   "post_office",
   'BeginningDash',
 
   #Third party Apps
   'crispy_forms',
 ]
+
+
 MIDDLEWARE = [
-  'django.middleware.security.SecurityMiddleware',
-  'django.contrib.sessions.middleware.SessionMiddleware',
-  'django.middleware.common.CommonMiddleware',
-  'django.middleware.csrf.CsrfViewMiddleware',
-  'django.contrib.auth.middleware.AuthenticationMiddleware',
-  'django.contrib.messages.middleware.MessageMiddleware',
-  'django.middleware.clickjacking.XFrameOptionsMiddleware',
-  'whitenoise.middleware.WhiteNoiseMiddleware',
-  'DashNig.middleware.LoginRequiredMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.gzip.GZipMiddleware",
+    'DashNig.middleware.LoginRequiredMiddleware',
 ]
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 ROOT_URLCONF = 'DashNig.urls'
